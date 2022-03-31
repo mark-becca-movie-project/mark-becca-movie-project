@@ -2,21 +2,21 @@
 
 const glitchURL = "https://island-momentous-plot.glitch.me/movies";
 
-fetch (glitchURL)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-    const movieList = document.querySelector("#movie-list");
-    data.forEach(movie => {
-      const movieItem = document.createElement("li");
-      movieItem.innerHTML = `
+fetch(glitchURL)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        const movieList = document.querySelector("#movie-list");
+        data.forEach(movie => {
+            const movieItem = document.createElement("li");
+            movieItem.innerHTML = `
         <h2>${movie.title}</h2>
-        <p>${movie.description}</p>
-      `;
-      movieList.appendChild(movieItem);
-    });
-  });
+        <p>${movie.plot}</p>
 
+      `;
+            movieList.appendChild(movieItem);
+        });
+    });
 
 
 //Get all the good stuff
