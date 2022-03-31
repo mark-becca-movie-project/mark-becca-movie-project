@@ -10,6 +10,12 @@ const getMovies = async () => {
   return data;
 };
 
+//get all good stuff again - check
+fetch(glitchURL)
+  .then(res => res.json())
+  .then(data => console.log(data)); //check
+
+
 //TODO: Check this ^
 
 
