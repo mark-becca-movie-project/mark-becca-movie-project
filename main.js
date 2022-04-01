@@ -82,9 +82,9 @@ function searchMovie() {
 }
 
 
-//Display a "loading..." message    //TODO: Check this done by Mark
+//TODO: DELETE BELOW
 // window.addEventListener("load", function(){
-//     const movieList = document.querySelector("#movie-list");
+//     const movieList = document.querySelector("#loading-message");
 //     const loadingMessage = document.createElement("li");
 //     loadingMessage.innerHTML = `
 //     <h2>Loading...</h2>
@@ -92,12 +92,12 @@ function searchMovie() {
 //     movieList.appendChild(loadingMessage);
 // });
 
-//or...
+// TODO: USE THIS/ Checked by Mark and works 15:51PM   04-01-2022
 $(window).on('load', function () {
     $('#loading-message').append('<span>Loading...</span>');
 });
 
-//TODO: Check this done by Mark ^
+
 
 
 // Make an AJAX request to get a listing of all the movies
