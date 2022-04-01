@@ -84,3 +84,32 @@ function addMovie(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Display a "loading..." message    //TODO: Check this done by Mark
+window.addEventListener("load", function(){
+    const movieList = document.querySelector("#movie-list");
+    const loadingMessage = document.createElement("li");
+    loadingMessage.innerHTML = `
+    <h2>Loading...</h2>
+    `;
+    movieList.appendChild(loadingMessage);
+});
+
+
+// Make an AJAX request to get a listing of all the movies
+
+
+
