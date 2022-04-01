@@ -27,14 +27,10 @@ function getAllMovies() {
         });
 }
 
-// Search for a Movie
-let movieSearch = document.querySelector('#userInput');
-console.log(movieSearch);
-movieSearch.addEventListener("click", updateMovies);
 
 // Delete Movies
 function deleteMovies(id){
-    fetch(glitchURL + '/' +id,{
+    fetch(glitchURL + '/' + id,{
         method: 'delete'
     }).then(function(response){
         console.log(response);
@@ -43,6 +39,7 @@ function deleteMovies(id){
 }
 //deleteMovies(255);
 
+addMovie();
 
 // Post Movies
 function addMovie(){
@@ -56,31 +53,29 @@ function addMovie(){
     };
     fetch(glitchURL, options)
         .then(function(response){
-            console.log(response);
-        })
+           return (response.json());
+        }).then(function (movie){
+        console.log(movie);
+    })
 }
 
-//addMovie();
+editMovie();
+function editMovie() {
+    let movie = {title:"", body:""}; {
+        fetch(glitchURL + '/' +id, {
+            method: 'edit'
+        }).then(function (response) {
+            return (response.json());
+        }).then(function (movie) {
+            console.log(movie);
+        })
+    }
+}
 
+// Search for a Movie
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function searchMovie () {
+    let movieSearch = document.querySelector('#userInput');
+    console.log(movieSearch);
+    movieSearch.addEventListener("click", getAllMovies);
+}
