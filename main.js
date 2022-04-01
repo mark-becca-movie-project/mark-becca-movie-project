@@ -1,4 +1,3 @@
-
 const glitchURL = "https://island-momentous-plot.glitch.me/movies";
 getAllMovies();
 
@@ -29,20 +28,21 @@ function getAllMovies() {
 
 
 // Delete Movies
-function deleteMovies(id){
-    fetch(glitchURL + '/' + id,{
+function deleteMovies(id) {
+    fetch(glitchURL + '/' + id, {
         method: 'delete'
-    }).then(function(response){
+    }).then(function (response) {
         console.log(response);
     })
 
 }
+
 //deleteMovies(255);
 
 addMovie();
 
 // Post Movies
-function addMovie(){
+function addMovie() {
     const movie = {title: 'Ajax Requests', body: 'Are a fun way to use JS!'};
     const options = {
         method: 'POST',
@@ -52,40 +52,34 @@ function addMovie(){
         body: JSON.stringify(movie),
     };
     fetch(glitchURL, options)
-        .then(function(response){
+        .then(function (response) {
             return (response.json());
-        }).then(function (movie){
+        }).then(function (movie) {
         console.log(movie);
     })
 }
 
-editMovie();
+$('#edit-btn').click(editMovie)
+
 function editMovie() {
-    let movie = {title:"", body:""}; {
-        fetch(glitchURL + '/' +id, {
-            method: 'edit'
-        }).then(function (response) {
-            return (response.json());
-        }).then(function (movie) {
-            console.log(movie);
-        })
-    }
+    console.log('Edit Movie Event')
+    let movie = {title: "", body: ""};
+    fetch(glitchURL + '/' + id, {
+        method: 'edit'
+    }).then(function (response) {
+        return (response.json());
+    }).then(function (movie) {
+        console.log(movie);
+    })
 }
 
 // Search for a Movie
 
-function searchMovie () {
+function searchMovie() {
     let movieSearch = document.querySelector('#userInput');
     console.log(movieSearch);
     movieSearch.addEventListener("click", getAllMovies);
 }
-
-
-
-
-
-
-
 
 
 //Display a "loading..." message    //TODO: Check this done by Mark
@@ -99,7 +93,7 @@ function searchMovie () {
 // });
 
 //or...
-$(window).on('load', function(){
+$(window).on('load', function () {
     $('#loading-message').append('<span>Loading...</span>');
 });
 
