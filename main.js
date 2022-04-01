@@ -106,11 +106,35 @@ function searchMovie() {
 //     movieList.appendChild(loadingMessage);
 // });
 
-// TODO: USE THIS/ Checked by Mark and works 15:51PM   04-01-2022
-$(window).on('load', function () {
-    $('#loading-message').append('<span>Loading...</span>');
-});
+// // TODO: USE THIS/ Checked by Mark and works 15:51PM   04-01-2022
+// $(window).on('load', function () {
+//     $('#loading-message').append('<span>Loading...</span>');
+// });
 
+
+//or..
+// setTimeout(getAllMovies, 5000);
+//too easy? doesn't stop... must be another way
+
+function getAllMoviesLoading() {
+//language=HTML
+    let loading = `
+        <div id = "loading-screen">
+    <div class="spinner-border text-info m-5" role="status">
+    <span class="sr-only loading-message">Loading...</span>
+</div>
+</div>
+`;
+    $('#loading-message').append(loading);
+    setTimeout(getAllMovies, 5000);
+}
+// }
+getAllMoviesLoading()
+
+//     setTimeout(() => {
+//         load.append('<span>Loading...</span>');
+//     }, delay);
+// };
 
 
 
