@@ -53,7 +53,7 @@ function addMovie(){
     };
     fetch(glitchURL, options)
         .then(function(response){
-           return (response.json());
+            return (response.json());
         }).then(function (movie){
         console.log(movie);
     })
@@ -79,3 +79,32 @@ function searchMovie () {
     console.log(movieSearch);
     movieSearch.addEventListener("click", getAllMovies);
 }
+
+
+
+
+
+
+
+
+
+//Display a "loading..." message    //TODO: Check this done by Mark
+// window.addEventListener("load", function(){
+//     const movieList = document.querySelector("#movie-list");
+//     const loadingMessage = document.createElement("li");
+//     loadingMessage.innerHTML = `
+//     <h2>Loading...</h2>
+//     `;
+//     movieList.appendChild(loadingMessage);
+// });
+
+//or...
+$(window).on('load', function(){
+    $('#loading-message').append('<span>Loading...</span>');
+});
+
+//TODO: Check this done by Mark ^
+
+
+// Make an AJAX request to get a listing of all the movies
+
