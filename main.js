@@ -1,7 +1,7 @@
 const glitchURL = "https://island-momentous-plot.glitch.me/movies";
 getAllMovies();
-
 //Get Movies
+//language=HTML
 function getAllMovies() {
     fetch(glitchURL)
         .then(response => response.json())
@@ -9,23 +9,24 @@ function getAllMovies() {
             console.log(data);
             const movieList = document.querySelector("#movie-list");
             data.forEach(movie => {
-                const movieItem = document.createElement("li");
-                movieItem.innerHTML = `
-            <h2>${movie.title}</h2>
-            <p>${movie.actors}</p>
-            <p>${movie.director}</p>
-            <p>${movie.genre}</p>
-            <p>${movie.id}</p>
-            <p>${movie.plot}</p>
-            <img src="${movie.poster}">
-            <p>${movie.rating}</p>
-            <p>${movie.year}</p>
-          `;
-                movieList.appendChild(movieItem);
+                const movieItem = `
+                    <li>
+                        <h2>${movie.title}</h2>
+                        <p>${movie.actors}</p>
+                        <p>${movie.director}</p>
+                        <p>${movie.genre}</p>
+                        <input type="text" value="${movie.plot}" class="movie-plot" readonly>
+                        <img src="${movie.poster}">
+                        <input type="text" value="${movie.rating}" class="movie-rating" readonly>
+                        <p>${movie.year}</p>
+                        <button type="button" class="edit-btn" data-id="${movie.id}">Edit</button>
+                        <button type="button" class="delete-btn" data-id="${movie.id}">Delete</button>
+                    </li>
+                `;
+                movieList.innerHTML += movieItem;
             });
         });
 }
-
 
 // Delete Movies
 function deleteMovies(id) {
@@ -37,9 +38,8 @@ function deleteMovies(id) {
 
 }
 
-//deleteMovies(255);
+$(document).on('click', '.delete-btn', deleteMovies)
 
-addMovie();
 
 // Post Movies
 function addMovie() {
@@ -59,22 +59,36 @@ function addMovie() {
     })
 }
 
-$('#edit-btn').click(editMovie)
+$(document).on('click', '.edit-btn', editMovie)
 
 function editMovie() {
-    console.log('Edit Movie Event')
-    let movie = {title: "", body: ""};
-    fetch(glitchURL + '/' + id, {
-        method: 'edit'
+    $(this).siblings('input').attr('readonly', false)
+    $(this).text('save')
+    $(document).off('click', '.edit-btn', editMovie)
+    $(document).on('click', '.edit-btn', saveUserEdit)
+
+}
+
+function saveUserEdit (){
+    $(document).off('click', '.edit-btn', saveUserEdit)
+    $(document).on('click', '.edit-btn', editMovie)
+    $(this).text('edit')
+    $(this).siblings('input').attr('readonly', true)
+    console.log()
+    let movie = {plot: $(this).siblings('input.movie-plot').val(), rating: $(this).siblings('input.movie-rating').val()};
+    console.log(movie);
+    fetch(glitchURL + '/' + $(this).attr('data-id'), {
+        method: 'put', body: JSON.stringify(movie)
     }).then(function (response) {
         return (response.json());
-    }).then(function (movie) {
-        console.log(movie);
+    }).then(function (data) {
+        console.log(data);
     })
 }
 
-// Search for a Movie
+// Add Movie
 
+// Search for a Movie
 function searchMovie() {
     let movieSearch = document.querySelector('#userInput');
     console.log(movieSearch);
