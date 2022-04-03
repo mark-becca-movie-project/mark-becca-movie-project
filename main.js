@@ -28,12 +28,13 @@ function getAllMovies() {
         });
 }
 
-// Delete Movies
-function deleteMovies(id) {
-    fetch(glitchURL + '/' + id, {
+// Delete Movies   
+function deleteMovies() {
+            let deleteCard = $(this)
+    fetch(glitchURL + '/' + deleteCard.attr('data-id'), {
         method: 'delete'
     }).then(function (response) {
-        console.log(response);
+        deleteCard.parent().remove();
     })
 
 }
@@ -106,11 +107,11 @@ function searchMovie() {
 //     movieList.appendChild(loadingMessage);
 // });
 
-// // TODO: USE THIS/ Checked by Mark and works 15:51PM   04-01-2022
+// // // TODO: USE THIS/ Checked by Mark and works 15:51PM   04-01-2022
 // $(window).on('load', function () {
 //     $('#loading-message').append('<span>Loading...</span>');
 // });
-
+ //TODO: the page load animation is continuous because it's boostrap... toggle class? hide class? ... fix me!  ♥️
 
 //or..
 // setTimeout(getAllMovies, 5000);
