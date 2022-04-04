@@ -111,12 +111,12 @@ function searchMovie() {
 // $(window).on('load', function () {
 //     $('#loading-message').append('<span>Loading...</span>');
 // });
- //TODO: the page load animation is continuous because it's boostrap... toggle class? hide class? ... fix me!  ♥️
+
 
 //or..
 // setTimeout(getAllMovies, 5000);
 //too easy? doesn't stop... must be another way
-
+            //TODO: Verify this, animation loads with setTimeout but... how to get it to stop?
 function getAllMoviesLoading() {
 //language=HTML
     let loading = `
