@@ -7,29 +7,30 @@ Universal
 pseudo-elements). One common use of this selector is to apply a custom
 `box-sizing`. */
 
-* {
-    outline: 1px solid red;
-}
+/** {*/
+/*    outline: 1px solid red;*/
+/*}*/
 
 
-* {
-    outline: 1px solid red;
-    outline-offset: -1px;
+/** {*/
+/*    outline: 1px solid red;*/
+/*    outline-offset: -1px;*/
+/*}*/
+
+.container {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+
+    /*margin: 0 auto;*/
 }
-         .page-wrapper {
-             text-align: center;
-             display: flex;
-             flex-direction: row;
-             flex-wrap: wrap;
-             justify-content: space-around;
-             align-items: center;
-             align-content: center;
-             /*margin: 0 auto;*/
-         }
+
 .main-cards {
     text-align: center;
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
@@ -41,10 +42,11 @@ pseudo-elements). One common use of this selector is to apply a custom
     flex: 1 0 21%;
     display: inline-block;
     margin: 10px 0 0 2%;
-    flex-grow: 1;
+    /*flex-grow: 1;*/
     border: 0;
-    width: calc(100% * (1/4) - 10px - 1px);
+    align-content: center;
 
+    /*width: calc(100% * (1 / 4) - 10px - 1px);*/
 
 }
 
@@ -55,7 +57,7 @@ pseudo-elements). One common use of this selector is to apply a custom
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    /*background-color: rgba(0, 0, 0, 0.5);*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,7 +76,7 @@ pseudo-elements). One common use of this selector is to apply a custom
     position: relative;
     width: 80px;
     height: 80px;
-    border: 3px solid rgba(0, 0, 0, 0.2);
+    /*border: 3px solid rgba(0, 0, 0, 0.2);*/
     animation: loader 6s infinite ease;
 
 }
