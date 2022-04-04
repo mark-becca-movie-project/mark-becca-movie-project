@@ -16,6 +16,7 @@ pseudo-elements). One common use of this selector is to apply a custom
 /*    outline: 1px solid red;*/
 /*    outline-offset: -1px;*/
 /*}*/
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Chakra+Petch&family=Josefin+Sans:wght@300&family=Monoton&family=Play&display=swap');
 
 .container {
     text-align: center;
@@ -103,18 +104,45 @@ pseudo-elements). One common use of this selector is to apply a custom
     text-align: center;
 }
 
+.navbar {
+    background-color: #770404
+
+}
+
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 Root
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 :root {
+    /*color: #2f3136;*/
+
 }
 
 html {
+    /*font-family: 'Bangers', cursive;*/
+    /*font-family: 'Chakra Petch', sans-serif;*/
+    /*font-family: 'Josefin Sans', sans-serif;*/
+    /*font-family: 'Monoton', cursive;*/
+    /*font-family: 'Play', sans-serif;*/
+
 }
+/*TODO: FONTS:
+ /*font-family: 'Bangers', cursive;*/
+/*font-family: 'Chakra Petch', sans-serif;*/
+/*font-family: 'Josefin Sans', sans-serif;*/
+/*font-family: 'Monoton', cursive;*/
+/*font-family: 'Play', sans-serif;*/
 
 body {
+    /*background-color: #1b1b1b;*/
+    /*color:  #E50914*/
+    background-color: #060637;
+    color:  #E50914;
+    font-family: 'Play', sans-serif;
+
+
+
 }
 
 
@@ -126,6 +154,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
+    font-family: 'Monoton', cursive;
+
 }
 
 h2 {
