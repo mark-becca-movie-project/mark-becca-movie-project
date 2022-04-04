@@ -3,22 +3,28 @@ getAllMovies();
 //Get Movies
 //language=HTML
 function getAllMovies() {
+    console.log('getAllMovies');
     fetch(glitchURL)
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            const movieList = document.querySelector("#movie-list");
-            data.forEach(movie => {
-                const movieItem = `
-                    <div class="container main-cards mt-5">
+            renderMovieCards(data);
+        });
+}
+
+function renderMovieCards(data) {
+    const movieList = document.querySelector("#movie-list");
+    movieList.innerHTML= data.map(movie => {
+        return `
+                    <div class="container main-cards justify-content-around mt-5">
                         <div class="row">
-                            <div class="main-card-style column col ">
+                            <div class="main-card-style column">
                                 <p>${movie.actors}</p>
                                 <p>${movie.director}</p>
                                 <p>${movie.genre}</p>
                                 <input type="text" value="${movie.plot}" class="movie-plot" readonly>
-                                <div class="image col">
-                                    <div class="image-wrapper col">
+                                <div class="image">
+                                    <div class="image-wrapper">
                                         <h2>${movie.title}</h2>
 
                                         <img class="image-center" src="${movie.poster}">
@@ -32,9 +38,7 @@ function getAllMovies() {
                         </div>
                     </div>
                 `;
-                movieList.innerHTML += movieItem;
-            });
-        });
+    }).join('');
 }
 
 // Delete Movies
@@ -51,7 +55,7 @@ function deleteMovies() {
 $(document).on('click', '.delete-btn', deleteMovies)
 
 
-// Post Movies
+// Add/Post Movies
 function addMovie() {
     const movie = {title: 'Ajax Requests', body: 'Are a fun way to use JS!'};
     const options = {
@@ -84,7 +88,7 @@ function saveUserEdit() {
     $(document).on('click', '.edit-btn', editMovie)
     $(this).text('edit')
     $(this).siblings('input').attr('readonly', true)
-    console.log()
+
     let movie = {
         plot: $(this).siblings('input.movie-plot').val(),
         rating: $(this).siblings('input.movie-rating').val()
@@ -99,17 +103,21 @@ function saveUserEdit() {
     })
 }
 
-// Add Movie
-
 // Search for a Movie
-function searchMovie() {
-    let movieSearch = document.querySelector('#userInput');
+
+
+
+
+$(document).on('click', '#search-btn', function () {
+    let movieSearch = $('#user-input').val();
     console.log(movieSearch);
-    movieSearch.addEventListener("click", getAllMovies);
-}
-
-
-
+    fetch(glitchURL +  `?title=${movieSearch}`)
+        .then(function (response) {
+            return (response.json());
+        }).then(function (data) {
+        renderMovieCards(data);
+    })
+});
 
 
 //VERSION ONE
@@ -144,30 +152,33 @@ window.addEventListener("load", function loadingMessage() {
     })
 //language=HTML
     let loading = `
-<!--            <div id="loading-screen">-->
-                <div class="spinner-border text-info m-5 loading-screen" style="width: 10rem; height: 10rem"  role="status">
-                    <span class="sr-only loading-message loader"><span class="loader-inner">Loading...</span></span>
-                </div>
-<!--            </div>-->
-        `;
+        <div id="loading-screen">
+            <div class="spinner-border text-info m-5" role="status">
+                <span class="sr-only loading-message">Loading...</span>
+            </div>
+        </div>
+    `;
     // document.getElementsByClassName('loading-message').append(loading);
     $('#loading-message').append(loading);
-    $('.loading-screen').fadeOut("slow");
-    // setTimeout (loadingMessage, 5000);
-});
-//TODO: Slow and force a preload delay below:
-
-$(window).on('load', function () {
-    $('.loading-screen').fadeOut("slow");
-
+    setTimeout(loadingMessage, 5000);
 });
 
-// }
-// else {
-//     $('#loading-message').remove();
-// }
 
 
 
 
-// Make an AJAX request to get a listing of all the movies
+
+
+
+
+
+
+Message Rebecca Martinez
+
+
+
+
+
+
+
+
