@@ -18,6 +18,7 @@ pseudo-elements). One common use of this selector is to apply a custom
 }
 
 .main-cards {
+    text-align: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -25,6 +26,17 @@ pseudo-elements). One common use of this selector is to apply a custom
     align-items: center;
     align-content: center;
     /*margin: 0 auto;*/
+}
+
+.main-card-style {
+    flex: 1 0 21%;
+    display: inline-block;
+    margin: 10px 0 0 2%;
+    flex-grow: 1;
+    border: 0;
+    width: calc(100% * (1/4) - 10px - 1px);
+
+
 }
 
 /*TODO: Play with this later: below*/
@@ -38,7 +50,14 @@ pseudo-elements). One common use of this selector is to apply a custom
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 9999;
+}
 
+.image-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20rem;
 }
 
 .loader {
@@ -58,8 +77,8 @@ pseudo-elements). One common use of this selector is to apply a custom
     background-color: rgba(0, 0, 0, 0.2);
     animation: loader-inner 6s infinite ease-in;
 }
-/*TODO: Play with this later: Above*/
 
+/*TODO: Play with this later: Above*/
 
 
 *, *::before, *::after {

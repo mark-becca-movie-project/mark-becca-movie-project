@@ -10,7 +10,7 @@ function getAllMovies() {
             const movieList = document.querySelector("#movie-list");
             data.forEach(movie => {
                 const movieItem = `
-                    <div class="container main-cards">
+                    <div class="container main-cards justify-content-around mt-5">
                         <div class="row">
                             <div class="main-card-style column">
                                 <p>${movie.actors}</p>
@@ -21,7 +21,7 @@ function getAllMovies() {
                                     <div class="image-wrapper">
                                         <h2>${movie.title}</h2>
 
-                                        <img src="${movie.poster}">
+                                        <img class="image-center" src="${movie.poster}">
                                     </div>
                                 </div>
                                 <input type="text" value="${movie.rating}" class="movie-rating" readonly>
@@ -152,16 +152,15 @@ window.addEventListener("load", function loadingMessage() {
         `;
     // document.getElementsByClassName('loading-message').append(loading);
     $('#loading-message').append(loading);
-    // $('.loading-screen').fadeOut("slow");
-    setTimeout (loadingMessage, 5000);
+    $('.loading-screen').fadeOut("slow");
+    // setTimeout (loadingMessage, 5000);
 });
 //TODO: Slow and force a preload delay below:
 
-// $(window).on('load', function () {
-//     $('.loading-screen').fadeOut("slow");
-//     $('#loading-screen').fadeOut("slow");
-//
-// });
+$(window).on('load', function () {
+    $('.loading-screen').fadeOut("slow");
+
+});
 
 // }
 // else {
