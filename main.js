@@ -162,3 +162,23 @@ window.addEventListener("load", function loadingMessage() {
     $('#loading-message').append(loading);
     setTimeout(loadingMessage, 5000);
 });
+
+
+
+
+
+
+
+
+
+
+
+Message Rebecca Martinez
+
+
+
+
+
+
+
+
