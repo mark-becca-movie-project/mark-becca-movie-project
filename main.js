@@ -134,7 +134,7 @@ window.addEventListener("load", function loadingMessage() {
         $('#loading-message').remove();
     })
 //language=HTML
-    let loading = `
+    let loading = `                                                
             <div id="loading-screen">
                 <div class="spinner-border text-info m-5" role="status">
                     <span class="sr-only loading-message">Loading...</span>
