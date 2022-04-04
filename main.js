@@ -42,7 +42,7 @@ function deleteMovies() {
 $(document).on('click', '.delete-btn', deleteMovies)
 
 
-// Post Movies
+// Add/Post Movies
 function addMovie() {
     const movie = {title: 'Ajax Requests', body: 'Are a fun way to use JS!'};
     const options = {
@@ -75,7 +75,7 @@ function saveUserEdit() {
     $(document).on('click', '.edit-btn', editMovie)
     $(this).text('edit')
     $(this).siblings('input').attr('readonly', true)
-    console.log()
+
     let movie = {
         plot: $(this).siblings('input.movie-plot').val(),
         rating: $(this).siblings('input.movie-rating').val()
@@ -90,20 +90,28 @@ function saveUserEdit() {
     })
 }
 
-// Add Movie
-
 // Search for a Movie
-function searchMovie() {
-    let movieSearch = document.querySelector('#userInput');
-    console.log(movieSearch);
-    movieSearch.addEventListener("click", getAllMovies);
-}
+
+let movieSearch = document.querySelector('#user-input', getAllMovies);
+
+$(document).click('#search-btn', getAllMovies);
 
 
 
 
 
-    //VERSION ONE
+
+
+
+
+
+
+
+
+
+
+
+//VERSION ONE
 // // if (document.readyState === 'loading') {
 //     window.addEventListener("load", function loadingMessage() {
 // //language=HTML
@@ -135,22 +143,20 @@ window.addEventListener("load", function loadingMessage() {
     })
 //language=HTML
     let loading = `
-            <div id="loading-screen">
-                <div class="spinner-border text-info m-5" role="status">
-                    <span class="sr-only loading-message">Loading...</span>
-                </div>
+        <div id="loading-screen">
+            <div class="spinner-border text-info m-5" role="status">
+                <span class="sr-only loading-message">Loading...</span>
             </div>
-        `;
+        </div>
+    `;
     // document.getElementsByClassName('loading-message').append(loading);
     $('#loading-message').append(loading);
-    setTimeout (loadingMessage, 5000);
+    setTimeout(loadingMessage, 5000);
 });
 // }
 // else {
 //     $('#loading-message').remove();
 // }
-
-
 
 
 // Make an AJAX request to get a listing of all the movies
