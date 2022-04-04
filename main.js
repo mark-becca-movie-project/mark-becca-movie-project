@@ -100,82 +100,57 @@ function searchMovie() {
 }
 
 
-//TODO: DELETE BELOW
-// window.addEventListener("load", function(){
-//     const movieList = document.querySelector("#loading-message");
-//     const loadingMessage = document.createElement("li");
-//     loadingMessage.innerHTML = `
-//     <h2>Loading...</h2>
-//     `;
-//     movieList.appendChild(loadingMessage);
-// });
-
-// // // TODO: USE THIS/ Checked by Mark and works 15:51PM   04-01-2022
-// $(window).on('load', function () {
-//     $('#loading-message').append('<span>Loading...</span>');
-// });
 
 
-//or..
-// setTimeout(getAllMovies, 5000);
-//too easy? doesn't stop... must be another way
-//TODO: Verify this, animation loads with setTimeout but... how to get it to stop?
 
-// function loadingMessage() {
+    //VERSION ONE
+// // if (document.readyState === 'loading') {
+//     window.addEventListener("load", function loadingMessage() {
 // //language=HTML
-//     let loading = `
-//         <div id="loading-screen">
-//             <div class="spinner-border text-info m-5" role="status">
-//                 <span class="sr-only loading-message">Loading...</span>
+//         let loading = `
+//             <div id="loading-screen">
+//                 <div class="spinner-border text-info m-5" role="status">
+//                     <span class="sr-only loading-message">Loading...</span>
+//                 </div>
 //             </div>
-//         </div>
-//     `;
-//     $('#loading-message').append(loading);
-//     setTimeout(loadingMessage, 5000);
-// }
-// loadingMessage()
+//         `;
+//         // document.getElementsByClassName('loading-message').append(loading);
+//         $('#loading-message').append(loading);
+//         setTimeout (loadingMessage, 5000);
+//     });
+// // }
+// // else {
+// //     $('#loading-message').remove();
+// // }
 
-if (document.readyState === 'loading') {
-    window.addEventListener("load", function loadingMessage() {
+//Version TWO
+// if (document.readyState === 'loading') {
+window.addEventListener("load", function loadingMessage() {
+    fetch(glitchURL)
+        .then(function (response) {
+            return (response.json());
+        }).then(function (data) {
+        console.log(data);
+        $('#loading-message').remove();
+    })
 //language=HTML
-        let loading = `
+    let loading = `
             <div id="loading-screen">
                 <div class="spinner-border text-info m-5" role="status">
                     <span class="sr-only loading-message">Loading...</span>
                 </div>
             </div>
         `;
-        document.getElementsByClassName('loading-message').append(loading);
-        // $('#loading-message').append(loading);
-        setTimeout(loadingMessage, 5000);
-    });
-}        else {
-document.removeEventListener("load", function loadingMessage() { });
-}
-
-
-
-// } else if (document.readyState === 'complete') {
+    // document.getElementsByClassName('loading-message').append(loading);
+    $('#loading-message').append(loading);
+    setTimeout (loadingMessage, 5000);
+});
+// }
+// else {
 //     $('#loading-message').remove();
 // }
 
 
-//TODO: review and tweak below example
-// function work() { /*...*/ }
-//
-// if (document.readyState == 'loading') {
-//     // still loading, wait for the event
-//     document.addEventListener('DOMContentLoaded', work);
-// } else {
-//     // DOM is ready!
-//     work();    //Create function here that stops loadingMessage function
-// }
-//
-// setTimeout(() => {
-//     load.append('<span>Loading...</span>');
-// }, delay);
-// }
-// ;
 
 
 // Make an AJAX request to get a listing of all the movies
