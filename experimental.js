@@ -144,25 +144,16 @@ window.addEventListener("load", function loadingMessage() {
     })
 //language=HTML
     let loading = `
-<!--            <div id="loading-screen">-->
-                <div class="spinner-border text-info m-5 loading-screen" style="width: 10rem; height: 10rem"  role="status">
-                    <span class="sr-only loading-message loader"><span class="loader-inner">Loading...</span></span>
+            <div id="loading-screen">
+                <div class="spinner-border text-info m-5" role="status">
+                    <span class="sr-only loading-message">Loading...</span>
                 </div>
-<!--            </div>-->
+            </div>
         `;
     // document.getElementsByClassName('loading-message').append(loading);
     $('#loading-message').append(loading);
-    // $('.loading-screen').fadeOut("slow");
     setTimeout (loadingMessage, 5000);
 });
-//TODO: Slow and force a preload delay below:
-
-// $(window).on('load', function () {
-//     $('.loading-screen').fadeOut("slow");
-//     $('#loading-screen').fadeOut("slow");
-//
-// });
-
 // }
 // else {
 //     $('#loading-message').remove();

@@ -10,27 +10,18 @@ function getAllMovies() {
             const movieList = document.querySelector("#movie-list");
             data.forEach(movie => {
                 const movieItem = `
-                    <div class="container main-cards">
-                        <div class="row">
-                            <div class="main-card-style column">
-                                <p>${movie.actors}</p>
-                                <p>${movie.director}</p>
-                                <p>${movie.genre}</p>
-                                <input type="text" value="${movie.plot}" class="movie-plot" readonly>
-                                <div class="image">
-                                    <div class="image-wrapper">
-                                        <h2>${movie.title}</h2>
-
-                                        <img src="${movie.poster}">
-                                    </div>
-                                </div>
-                                <input type="text" value="${movie.rating}" class="movie-rating" readonly>
-                                <p>${movie.year}</p>
-                                <button type="button" class="edit-btn" data-id="${movie.id}">Edit</button>
-                                <button type="button" class="delete-btn" data-id="${movie.id}">Delete</button>
-                            </div>
-                        </div>
-                    </div>
+                    <li>
+                        <h2>${movie.title}</h2>
+                        <p>${movie.actors}</p>
+                        <p>${movie.director}</p>
+                        <p>${movie.genre}</p>
+                        <input type="text" value="${movie.plot}" class="movie-plot" readonly>
+                        <img src="${movie.poster}">
+                        <input type="text" value="${movie.rating}" class="movie-rating" readonly>
+                        <p>${movie.year}</p>
+                        <button type="button" class="edit-btn" data-id="${movie.id}">Edit</button>
+                        <button type="button" class="delete-btn" data-id="${movie.id}">Delete</button>
+                    </li>
                 `;
                 movieList.innerHTML += movieItem;
             });
@@ -144,25 +135,16 @@ window.addEventListener("load", function loadingMessage() {
     })
 //language=HTML
     let loading = `
-<!--            <div id="loading-screen">-->
-                <div class="spinner-border text-info m-5 loading-screen" style="width: 10rem; height: 10rem"  role="status">
-                    <span class="sr-only loading-message loader"><span class="loader-inner">Loading...</span></span>
+            <div id="loading-screen">
+                <div class="spinner-border text-info m-5" role="status">
+                    <span class="sr-only loading-message">Loading...</span>
                 </div>
-<!--            </div>-->
+            </div>
         `;
     // document.getElementsByClassName('loading-message').append(loading);
     $('#loading-message').append(loading);
-    // $('.loading-screen').fadeOut("slow");
     setTimeout (loadingMessage, 5000);
 });
-//TODO: Slow and force a preload delay below:
-
-// $(window).on('load', function () {
-//     $('.loading-screen').fadeOut("slow");
-//     $('#loading-screen').fadeOut("slow");
-//
-// });
-
 // }
 // else {
 //     $('#loading-message').remove();
