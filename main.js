@@ -10,15 +10,15 @@ function getAllMovies() {
             const movieList = document.querySelector("#movie-list");
             data.forEach(movie => {
                 const movieItem = `
-                    <div class="container main-cards justify-content-around mt-5">
+                    <div class="container main-cards mt-5">
                         <div class="row">
-                            <div class="main-card-style column">
+                            <div class="main-card-style column col ">
                                 <p>${movie.actors}</p>
                                 <p>${movie.director}</p>
                                 <p>${movie.genre}</p>
                                 <input type="text" value="${movie.plot}" class="movie-plot" readonly>
-                                <div class="image">
-                                    <div class="image-wrapper">
+                                <div class="image col">
+                                    <div class="image-wrapper col">
                                         <h2>${movie.title}</h2>
 
                                         <img class="image-center" src="${movie.poster}">
