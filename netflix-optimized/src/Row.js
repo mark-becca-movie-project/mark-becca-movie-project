@@ -13,16 +13,27 @@ function Row({title, fetchUrl}) {
             setMovies(request.data.results);
             return request;
         }
+
         fetchData();
     }, [fetchUrl]);          /* if we leave brackets blank, run once when the row loads,  and don't run it again*/
     console.log(movies);
     return (
-        <div>
+        <div className="row">
             <h2>{title}</h2>
-            {/*{container with posters inside}*/}
+            <div className="row__posters">
+                {/*{several row posters}*/}
+                {movies.map(movie => (
+                    <img
+                        key={movie.id}
+                        src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                        alt={movie.original_title}
+                    />
+                ))}
+            </div>
         </div>
     )
 }
+
 export default Row
 
 /*
