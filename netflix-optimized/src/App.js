@@ -10,7 +10,7 @@ function App() {
 
     <div className="App">
       <h1>awesomeSauce</h1>
-        <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} />
+        <Row title="Comedies" fetchUrl={requests.fetchComedyMovies} />
         <Row title="Trending Now" fetchUrl={requests.fetchTrending}/>
       {/*{requests.}*/}
     </div>
