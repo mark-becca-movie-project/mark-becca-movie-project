@@ -1,6 +1,4 @@
 const glitchURL = "https://island-momentous-plot.glitch.me/movies";
-
-
 getAllMovies();
 //Get Movies
 //language=HTML
@@ -15,12 +13,11 @@ function getAllMovies() {
 }
 
 //Make the Movie Cards
-
 function renderMovieCards(data) {
     const movieList = document.querySelector("#movie-list");
     movieList.innerHTML = data.map(movie => {
         return `
-            <div class=" card-body border-color-warning main-card-style col-12 col-md-4  ">
+            <div class=" card-body border-color-warning main-card-style col-12 col-md-4  " id="card-borders">
             <div class="image col">
                 <div class="image-wrapper col">
                     <h2 class="card-title">${movie.title}</h2>
@@ -45,15 +42,12 @@ function deleteMovies() {
     }).then(function (response) {
         deleteCard.parent().remove();
     })
-
 }
 
 $(document).on('click', '.delete-btn', deleteMovies)
 
-
 // Add/Post Movies
 function addMovie(movie) {
-
     const options = {
         method: 'POST', headers: {
             'Content-Type': 'application/json',
@@ -69,7 +63,6 @@ function addMovie(movie) {
 }
 
 // Add button to add movies from TMDB
-
 function getTMDBMovies() {
     fetch(`https://api.themoviedb.org/3/movie/550?api_key=${TMDB_KEY}`)
         .then((response) => {
@@ -89,10 +82,9 @@ function getTMDBMovies() {
             console.log(error);
         });
 }
+
 getTMDBMovies();
-
 // Add Button
-
 $(document).on('click', '#add-btn', function () {
     let movieSearch = $('#user-input').val();
     console.log(movieSearch);
@@ -102,19 +94,18 @@ $(document).on('click', '#add-btn', function () {
         }).then(function (data) {
         //renderMovieCards(data);
         console.log(data.results[0]);
-        let movie = {title: data.results[0].title,
+        let movie = {
+            title: data.results[0].title,
             poster: data.results[0].poster_path,
             plot: data.results[0].overview,
             rating: data.results[0].vote_average,
-            year: data.results[0].release_date}
+            year: data.results[0].release_date
+        }
         addMovie(movie)
 
     })
 });
-
-
 //Edit Movies
-
 $(document).on('click', '.edit-btn', editMovie)
 
 function editMovie() {
@@ -122,11 +113,9 @@ function editMovie() {
     $(this).text('save')
     $(document).off('click', '.edit-btn', editMovie)
     $(document).on('click', '.edit-btn', saveUserEdit)
-
 }
 
 // Save Movie Edits from user
-
 function saveUserEdit() {
     $(document).off('click', '.edit-btn', saveUserEdit)
     $(document).on('click', '.edit-btn', editMovie)
