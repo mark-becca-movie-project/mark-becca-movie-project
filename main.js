@@ -1,4 +1,6 @@
 const glitchURL = "https://island-momentous-plot.glitch.me/movies";
+
+
 getAllMovies();
 //Get Movies
 //language=HTML
@@ -12,23 +14,23 @@ function getAllMovies() {
         });
 }
 
+//Make the Movie Cards
+
 function renderMovieCards(data) {
     const movieList = document.querySelector("#movie-list");
     movieList.innerHTML = data.map(movie => {
         return `
             <div class=" card-body border-color-warning main-card-style col-12 col-md-4  ">
-            <p>${movie.actors}</p>
-        <p>${movie.director}</p>
-        <p>${movie.genre}</p>
-        <input type="text" value="${movie.plot}" class="movie-plot card-subtitle mb-2 text-muted" readonly>
+            
+       
             <div class="image col">
                 <div class="image-wrapper col">
                     <h2 class="card-title">${movie.title}</h2>
-
-                    <img class="image-center card-img-top" src="${movie.poster}">
+                    <img class="image-center card-img-top"  src="https://image.tmdb.org/t/p/original${movie.poster}">
                 </div>
             </div>
             <input type="text" value="${movie.rating}" class="movie-rating" readonly>
+            <input type="text" value="${movie.plot}" class="movie-plot card-subtitle mb-2 text-muted" readonly>
                 <p>${movie.year}</p>
                 <button type="button" class="edit-btn" data-id="${movie.id}">Edit</button>
                 <button type="button" class="delete-btn" data-id="${movie.id}">Delete</button>
@@ -52,8 +54,8 @@ $(document).on('click', '.delete-btn', deleteMovies)
 
 
 // Add/Post Movies
-function addMovie() {
-    const movie = {title: 'Ajax Requests', body: 'Are a fun way to use JS!'};
+function addMovie(movie) {
+
     const options = {
         method: 'POST', headers: {
             'Content-Type': 'application/json',
@@ -63,9 +65,56 @@ function addMovie() {
         .then(function (response) {
             return (response.json());
         }).then(function (movie) {
-        console.log(movie);
+        console.log(movie.year);
+        getAllMovies()
     })
 }
+
+// Add button to add movies from TMDB
+
+function getTMDBMovies() {
+    fetch(`https://api.themoviedb.org/3/movie/550?api_key=${TMDB_KEY}`)
+        .then((response) => {
+            if (response.ok) {
+                console.log("SUCCESS")
+            } else {
+                console.log("NOT  SUCCESSFUL")
+            }
+            console.log(response)
+            return response.json()
+        })
+        .then((data) => {
+            console.log(data);
+            // Work with JSON data here
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+getTMDBMovies();
+
+
+$(document).on('click', '#add-btn', function () {
+    let movieSearch = $('#user-input').val();
+    console.log(movieSearch);
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${movieSearch}`)
+        .then(function (response) {
+            return (response.json());
+        }).then(function (data) {
+        //renderMovieCards(data);
+        console.log(data.results[0]);
+        let movie = {title: data.results[0].title,
+            poster: data.results[0].poster_path,
+            plot: data.results[0].overview,
+            rating: data.results[0].vote_average,
+            year: data.results[0].release_date}
+        addMovie(movie)
+
+    })
+});
+
+
+//Edit Movies
 
 $(document).on('click', '.edit-btn', editMovie)
 
@@ -76,6 +125,8 @@ function editMovie() {
     $(document).on('click', '.edit-btn', saveUserEdit)
 
 }
+
+// Save Movie Edits from user
 
 function saveUserEdit() {
     $(document).off('click', '.edit-btn', saveUserEdit)
@@ -97,8 +148,6 @@ function saveUserEdit() {
 }
 
 // Search for a Movie
-
-
 $(document).on('click', '#search-btn', function () {
     let movieSearch = $('#user-input').val();
     console.log(movieSearch);
@@ -111,27 +160,8 @@ $(document).on('click', '#search-btn', function () {
 });
 
 
-//VERSION ONE
-// // if (document.readyState === 'loading') {
-//     window.addEventListener("load", function loadingMessage() {
-// //language=HTML
-//         let loading = `
-//             <div id="loading-screen">
-//                 <div class="spinner-border text-info m-5" role="status">
-//                     <span class="sr-only loading-message">Loading...</span>
-//                 </div>
-//             </div>
-//         `;
-//         // document.getElementsByClassName('loading-message').append(loading);
-//         $('#loading-message').append(loading);
-//         setTimeout (loadingMessage, 5000);
-//     });
-// // }
-// // else {
-// //     $('#loading-message').remove();
-// // }
+// Loading
 
-//Version TWO
 // if (document.readyState === 'loading') {
 window.addEventListener("load", function loadingMessage() {
     fetch(glitchURL)
@@ -143,12 +173,12 @@ window.addEventListener("load", function loadingMessage() {
     })
 //language=HTML
     let loading = `
-<!--            <div id="loading-screen">-->
-                <div class="spinner-border text-info m-5 loading-screen" style="width: 10rem; height: 10rem"  role="status">
-                    <span class="sr-only loading-message loader"><span class="loader-inner">Loading...</span></span>
-                </div>
-<!--            </div>-->
-        `;
+        <!--            <div id="loading-screen">-->
+        <div class="spinner-border text-info m-5 loading-screen" style="width: 10rem; height: 10rem" role="status">
+            <span class="sr-only loading-message loader"><span class="loader-inner">Loading...</span></span>
+        </div>
+        <!--            </div>-->
+    `;
     // document.getElementsByClassName('loading-message').append(loading);
     $('#loading-message').append(loading);
     $('.loading-screen').fadeOut("slow");
