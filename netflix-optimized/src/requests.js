@@ -1,4 +1,3 @@
-const TMDB_API = "c2cc8e98bf7d78e509f32ca6ebc61519";
 //TODO: Hide this key
 //found from endpoints on the movie database
 const requests = {
