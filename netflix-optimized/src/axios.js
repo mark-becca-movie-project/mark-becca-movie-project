@@ -1,5 +1,4 @@
 import axios from "axios";
-import keys from "./keys.js";
 
 
 //base url to make requests to the movie database

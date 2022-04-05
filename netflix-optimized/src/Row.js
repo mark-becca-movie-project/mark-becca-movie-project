@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react"
 import axios from './axios';
-import keys from "./keys.js";
 
 
 function Row({title, fetchUrl}) {
@@ -16,7 +15,7 @@ function Row({title, fetchUrl}) {
         }
         fetchData();
     }, [fetchUrl]);          /* if we leave brackets blank, run once when the row loads,  and don't run it again*/
-
+    console.log(movies);
     return (
         <div>
             <h2>{title}</h2>
