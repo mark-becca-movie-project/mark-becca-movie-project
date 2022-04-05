@@ -21,8 +21,6 @@ function renderMovieCards(data) {
     movieList.innerHTML = data.map(movie => {
         return `
             <div class=" card-body border-color-warning main-card-style col-12 col-md-4  ">
-            
-       
             <div class="image col">
                 <div class="image-wrapper col">
                     <h2 class="card-title">${movie.title}</h2>
@@ -30,7 +28,7 @@ function renderMovieCards(data) {
                 </div>
             </div>
             <input type="text" value="${movie.rating}" class="movie-rating" readonly>
-            <input type="text" value="${movie.plot}" class="movie-plot card-subtitle mb-2 text-muted" readonly>
+            <p>${movie.plot}</p>
                 <p>${movie.year}</p>
                 <button type="button" class="edit-btn" data-id="${movie.id}">Edit</button>
                 <button type="button" class="delete-btn" data-id="${movie.id}">Delete</button>
@@ -93,6 +91,7 @@ function getTMDBMovies() {
 }
 getTMDBMovies();
 
+// Add Button
 
 $(document).on('click', '#add-btn', function () {
     let movieSearch = $('#user-input').val();
@@ -135,7 +134,7 @@ function saveUserEdit() {
     $(this).siblings('input').attr('readonly', true)
 
     let movie = {
-        plot: $(this).siblings('input.movie-plot').val(), rating: $(this).siblings('input.movie-rating').val()
+        rating: $(this).siblings('input.movie-rating').val()
     };
     console.log(movie);
     fetch(glitchURL + '/' + $(this).attr('data-id'), {
