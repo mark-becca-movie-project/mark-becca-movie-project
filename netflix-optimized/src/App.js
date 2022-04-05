@@ -1,7 +1,8 @@
-// import logo from './logo.svg';
 import React from 'react';
 import './App.css';
 import Row from "./Row.js" ;
+import requests from  './requests';
+import keys from './keys';
 
 
 function App() {
@@ -9,8 +10,9 @@ function App() {
 
     <div className="App">
       <h1>awesomeSauce</h1>
-        <Row title="Documentaries" />
-        <Row title="Trending Now"/>
+        <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} />
+        <Row title="Trending Now" fetchUrl={requests.fetchTrending}/>
+      {/*{requests.}*/}
     </div>
   );
 }

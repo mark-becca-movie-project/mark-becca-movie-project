@@ -1,5 +1,5 @@
-
-
+//
+//TODO: Hide this key
 //found from endpoints on the movie database
 const requests = {
     fetchDocumentaries: `/discover/movie?api_key=${TMDB_API}&with_genres=99`,
