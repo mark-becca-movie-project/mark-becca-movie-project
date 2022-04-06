@@ -30,7 +30,7 @@ function Row({title, fetchUrl}) {
                 {movies.map(movie => (
                     <img
                         className="row_poster"
-                        key={movie.id}
+                        key={movie.id}     //key is a unique identifier for each movie and renders faster
                         src={`${ogImgBaseURL}${movie.poster_path}`}  //string interpolation is a beautiful jS feature
                         alt={movie.name}
                     />
