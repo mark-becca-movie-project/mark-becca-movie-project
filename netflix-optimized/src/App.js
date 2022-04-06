@@ -9,7 +9,8 @@ function App() {
     return (
 
         <div className="App">
-            <h1>awesomeSauce</h1>
+            <h1>Netflix 2.0 (Testing by ReMark Studios)</h1>
+            <h5>Powered by CodeUp Inspiration and Caffeine</h5>
             <Row title="Comedies" fetchUrl={requests.fetchComedyMovies}/>
             <Row title="Trending Now" fetchUrl={requests.fetchTrending}/>
             {/*{requests.}*/}

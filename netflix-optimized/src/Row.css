@@ -2,6 +2,12 @@
 /*    outline: 1px solid red;*/
 /*}*/
 
+.row_posters {
+    display: flex;
+/*    By putting display: flex; (flexbox) on parent container with
+... with just a few lines of code changed the columns of movies to rows*/
+}
+
 .row_poster {
     object-fit: contain;
     width: 100%;
