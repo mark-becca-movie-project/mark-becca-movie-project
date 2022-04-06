@@ -186,10 +186,21 @@ $(window).on('load', function () {
 
 
 
+//random quote generator  - mark
+const quotes = ["What counts is not necessarily the size of the dog in the fight - it's the size of the fight in the dog.\n" +
+"Dwight D. Eisenhower", "A true friend is one who overlooks your failures and tolerates your successes.\n" +
+"Doug Larson", "Growth, individuation, autonomy, self-actualization, self-development, productiveness, self-realization, are all crudely synonymous.\n" +
+"Abraham Maslow", "“Conventional opinion is the ruin of our souls.”\n" +
+"Rumi","Every master was once a disaster.\n" +
+"T. Harv Eker", "In short, I do not seek perfection in human nature. To do so is a big mistake and a sure path toward disillusionment and unhappiness in life.\n" +
+"Abraham Maslow", "The secret of making progress is to get started. The secret to starting is to divide your complex, overwhelming task into small, manageable tasks, and then start the first.\n" +
+"Mark Twain"]
 
 
-
-
+function newQuote() {
+    let randomNumber = Math.floor(Math.random() * (quotes.length));
+    document.getElementById('displayQuote').innerHTML = quotes[randomNumber];
+}
 
 
 
