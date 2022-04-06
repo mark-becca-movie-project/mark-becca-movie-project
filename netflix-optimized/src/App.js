@@ -1,20 +1,20 @@
 import React from 'react';
 import './App.css';
 import Row from "./Row.js" ;
-import requests from  './requests';
+import requests from './requests';
 import keys from './keys';
 
 
 function App() {
-  return (
+    return (
 
-    <div className="App">
-      <h1>awesomeSauce</h1>
-        <Row title="Comedies" fetchUrl={requests.fetchComedyMovies} />
-        <Row title="Trending Now" fetchUrl={requests.fetchTrending}/>
-      {/*{requests.}*/}
-    </div>
-  );
+        <div className="App">
+            <h1>awesomeSauce</h1>
+            <Row title="Comedies" fetchUrl={requests.fetchComedyMovies}/>
+            <Row title="Trending Now" fetchUrl={requests.fetchTrending}/>
+            {/*{requests.}*/}
+        </div>
+    );
 }
 
 export default App;

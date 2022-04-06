@@ -1,5 +1,10 @@
 import React, {useState, useEffect} from "react"
 import axios from './axios';
+import"./Row.css";
+
+
+const imgBaseURL = "https://image.tmdb.org/t/p/w200";  //more manageable image size without size modifications or css
+const ogImgBaseURL = "https://image.tmdb.org/t/p/original";  //using this to apply css and custom sizing
 
 
 function Row({title, fetchUrl}) {
@@ -20,13 +25,14 @@ function Row({title, fetchUrl}) {
     return (
         <div className="row">
             <h2>{title}</h2>
-            <div className="row__posters">
+            <div className="row_posters">
                 {/*{several row posters}*/}
                 {movies.map(movie => (
                     <img
+                        className="row_poster"
                         key={movie.id}
-                        src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                        alt={movie.original_title}
+                        src={`${ogImgBaseURL}${movie.poster_path}`}  //string interpolation is a beautiful jS feature
+                        alt={movie.name}
                     />
                 ))}
             </div>

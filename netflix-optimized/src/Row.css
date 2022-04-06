@@ -1,0 +1,10 @@
+/** {*/
+/*    outline: 1px solid red;*/
+/*}*/
+
+.row_poster {
+    object-fit: contain;
+    width: 100%;
+/*    This width at 100% keeps the aspect ration correct, max width and height now size it*/
+    max-height: 100px;
+}
