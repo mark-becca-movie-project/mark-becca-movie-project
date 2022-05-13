@@ -1,4 +1,4 @@
-const glitchURL = "https://island-momentous-plot.glitch.me/movies";
+const glitchURL = "http://localhost:8080";
 getAllMovies();
 //Get Movies
 //language=HTML
